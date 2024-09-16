@@ -97,7 +97,56 @@ int main()
      * const int &r2 = i; // 正确：const int& 可以绑定到一个普通 int 上
      * 
      */
+
+
+    /**
+     * constexpr和常量表达式
+     * 常量表达式（const expression）是指值不会改变并且在编译过程就能得到计算结果的表达式。
+     */
     
+    /**
+     * 1. 常量表达式
+     * 具有两个特征:
+     * 由const修饰; 值在编译时就能得到;
+     */
+    const int max_files = 20; // max_files是常量表达式
+    const int limit = max_files + 1; // limit是常量表达式
+    int staff_size = 27; // staff_size不是常量表达式, 因为其类型为int 
+//  const int sz = func(); // sz不是常量表达式, 直到运行时才能知道sz的值，所以其不是
+
+    /**
+     * constexpr变量
+     * 
+     * 在一个复杂系统中，很难（几乎肯定不能）分辨一个初始值到底是不是常量表达式。
+     * 当然可以定义一个 const 变量并把它的初始值设为我们认为的某个常量表达式，
+     * 但在实际使用时，尽管要求如此却常常发现初始值并非常量表达式的情况。
+     * 可以这么说，在此种情况下，对象的定义和使用根本就是两回事儿。
+     * 
+     * C++11新标准规定，允许将变量声明为 constexpr 类型,
+     * 以便由编译器来验证变量的值是否是一个常量表达式。
+     * 声明为 constexpr的变量一定是一个常量，而且必须用常量表达式初始化。
+     */
+    constexpr int mf = 20; // 20是常量表达式
+    constexpr int limit = mf + 1; // mf + 1 是常量表达式
+    constexpr int sz = size(); // 只有当size()是一个constexpr类型的函数时才是正确的声明语句
+
+    /**
+     * 指针和constexpr
+     * 
+     * 必须明确一点，在 constexpr 声明中如果定义了一个指针，
+     * 限定符 constexpr仅对指针有效，与指针所指的对象无关。
+     */
+    const int *p = nullptr; // p 是一个指向整形常量的指针
+    constexpr int *q = nullptr; // q 是一个指向整数的常量指针
+    // P和q的类型相差甚远，P是一个指向常量的指针，而q是一个常量指针，
+    // 其中的关键在于 constexpr 把它所定义的对象置为顶层 const。
+
+    // 与其他常量指针类似，constexpr 指针既可以指向常量也可以指向一个非常量：
+    constexpr int *np = nullptr; // np 是一个指向整数的常量指针，其值力空
+    int j = 0; 
+    constexpr int i = 42;  // i的类型是整型常量, i和j都必须定义在函数体之外
+    constexpr const int *p = &i; // p是常量指针，指向整型常量i
+    constexpr int *pl = &j; // pl 是常量指针，指向整数j
 
     return 0;
 }
