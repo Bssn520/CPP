@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <cstddef>
 using namespace std;
 
 /**
@@ -121,6 +122,71 @@ int main()
      * ia2: 不确定
      * 
      */
+
+    /**
+     * 访问数组元素
+     * 
+     * 数组的元素也能使用范围for语句或下标来访问。
+     * 在使用数组下标时，通常将其定义为size_t类型。
+     * size_t是一种机器相关的无符号类型，它被设计的足够大以便能够表示内存中任意对象的大小。
+     * 在cstddef头文件中定义了size_t类型, 这个文件是C标准库 stddef.h 头文件的C++语言版本。
+     * 
+     */
+    unsigned scores[11] = {};
+    unsigned grade;
+    while (cin >> grade)
+    {
+        if (grade <= 100)
+        {
+            scores[grade/10]++; // 将当前分数段的统计值加1
+        }
+    }
+
+    for (auto i : scores)       // 对于scores 中的每个计数值
+        cout << i << " ";       // 输出当前的计数值
+    cout << endl;
+
+    /**
+     * ex 3.31:
+     * 
+     * 编写一段程序，定义一个含有10个 int 的数组，令每个元素的值就是其下标值。
+     * 
+     */
+    constexpr size_t length = 10;
+    int arr2[length] = {};
+    for (size_t i = 0; i < length; i++)
+    {
+        arr2[i] = i;
+    }
+
+    for (auto i : arr2)
+        cout << i << " ";
+    cout << endl;
+
+    /**
+     * ex 3.32:
+     * 将上一题刚刚创建的数组拷贝给另外一个数组。利用 vector 重写程序，实现类似的功能。
+     * 
+     */
+    int ia[10];
+    for (size_t i = 0; i < 10; i++) ia[i] = i;
+
+    // 将 ia 拷贝给 ia2
+    int ia23[10];
+    for (size_t i = 0; i < 10; i++) ia23[i] = ia[i];
+    
+    // 利用vector重写
+    vector<int> iv1;
+    for (decltype(iv1.size()) i = 0; i < 10; i++)
+    {
+        iv1.push_back(i);
+    }
+
+    // 将iv1拷贝给iv2
+    vector<int> iv2(iv1);
+    for(auto e : iv2)
+        cout << e << " ";
+    cout << endl;
 
     return 0;
 }
