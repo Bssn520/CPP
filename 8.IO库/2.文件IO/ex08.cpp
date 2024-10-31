@@ -1,7 +1,7 @@
 /*
  * @Author: error: git config user.name & please set dead value or install git
  * @Date: 2024-10-31 11:37:56
- * @LastEditTime: 2024-10-31 21:32:43
+ * @LastEditTime: 2024-10-31 21:37:12
  * @Description: 
  * 
  * Copyright (c) 2024 by Bssn520, All Rights Reserved. 
@@ -12,7 +12,13 @@
 #include <iostream>
 #include <ostream>
 
-
+/**
+ * @brief 从指定文件中读取数据源并以追加模式输出到目标文件
+ * 
+ * @param argc 参数总数
+ * @param argv 命令行参数 inputFile 和 outputFile
+ * @return int 
+ */
 int main(int argc, char *argv[]) {
     if (argc <= 1 || argc > 3) {// 参数检查
         std::cerr << "Usage: " << argv[0] << " <inputFile_path> <outputFile_path>" << std::endl;
