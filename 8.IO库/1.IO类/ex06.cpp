@@ -1,7 +1,7 @@
 /*
- * @Author: error: git config user.name & please set dead value or install git
- * @Date: 2024-10-31 11:37:56
- * @LastEditTime: 2024-10-31 21:31:29
+ * @Author: Bssn520 Bssn520@duck.com
+ * @Date: 2024-10-30 21:25:28
+ * @LastEditTime: 2024-11-01 17:18:20
  * @Description: 
  * 
  * Copyright (c) 2024 by Bssn520, All Rights Reserved. 

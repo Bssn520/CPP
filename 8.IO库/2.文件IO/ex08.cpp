@@ -1,11 +1,12 @@
 /*
- * @Author: error: git config user.name & please set dead value or install git
+ * @Author: Bssn520 Bssn520@duck.com
  * @Date: 2024-10-31 11:37:56
- * @LastEditTime: 2024-10-31 21:37:12
- * @Description: 
+ * @LastEditTime: 2024-11-01 17:18:13
+ * @Description: 从指定文件中读取数据源并以追加模式输出到目标文件
  * 
  * Copyright (c) 2024 by Bssn520, All Rights Reserved. 
  */
+
 
 #include "Sales_data_ex41.hpp"
 #include <fstream>
